@@ -1,7 +1,7 @@
 // Pharmaand Chatbot Widget
 // Floating chat bubble with RAG-powered responses
 
-const BACKEND_URL = "http://localhost:8000"; // Change to production URL after deployment
+const BACKEND_URL = "https://rohit0994-pharmaand-backend.hf.space"; // Live HF Spaces backend
 
 class PharmandChatbot {
     constructor() {
