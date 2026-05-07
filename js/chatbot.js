@@ -261,7 +261,13 @@ class PharmandChatbot {
             let answerHTML = data.answer;
 
             if (data.sources && data.sources.length > 0) {
-                answerHTML += `<br><br><small style="opacity: 0.7; font-size: 12px;">📚 Sources: ${data.sources.join(", ")}</small>`;
+                const sourceLinks = data.sources.map(src => {
+                    if (typeof src === "object" && src.url) {
+                        return `<a href="${src.url}" target="_blank" rel="noopener noreferrer" style="color: #10b981; text-decoration: none; display: block; margin-top: 4px;">→ ${src.title || src.url}</a>`;
+                    }
+                    return `<span style="display: block; margin-top: 4px;">→ ${src}</span>`;
+                }).join("");
+                answerHTML += `<br><small style="opacity: 0.8; font-size: 12px;"><strong>Sources:</strong>${sourceLinks}</small>`;
             }
 
             this.addMessage("assistant", answerHTML);
